@@ -1,3 +1,12 @@
+# Katapult Coding Standards
+
+### This document has been produced as a guideline for all digital projects using HTML, CSS and JS.
+This is a living document and should be updated to include more tools or information when needed.
+
+For any queries please email david@katapult.co.uk
+
+---
+
 # HTML Styling
 Styling guidelines that should be followed for all HTML code produced for any Katapult digital project.
 These are a living document and should be updated where and when necessary to keep it inline with standards required.
@@ -297,7 +306,7 @@ Traditional HTML authoring has a strict reliance on creating a universal documen
 ### HTML5 with sectioning
 In HTML5 documents, the heading hierarchy may be restarted within any element that creates a new sectioning context. The document outlining model in HTML5 combines the heading levels and sectioning hierarchy to assemble the document hierarchy.
 
-Technically, you could use only <h1> elements if you wanted to, but this makes styling more difficult so it’s not recommended. If a section of content merits its own hierarchy, then use a sectioning element.
+Technically, you could use only ```<h1>``` elements if you wanted to, but this makes styling more difficult so it’s not recommended. If a section of content merits its own hierarchy, then use a sectioning element.
 Never choose a heading level based on the global styling applied to that element though. There are conventions in CSS to swap the styling of another heading level consistently and in a maintainable way.
 ```
 <div class="primary">
