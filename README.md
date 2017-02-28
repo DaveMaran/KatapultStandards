@@ -271,7 +271,7 @@ However, like all generic elements they should be qualified with a class/ID to d
 ```
 
 ### Document outline
-The document hierarchy follows the HTML5 outlining algorithm. The heading outline (<h1> – <h6>) does not need to be hierarchical globally. HTML5 sectioning elements are used to new outlining contexts.
+The document hierarchy follows the HTML5 outlining algorithm. The heading outline (```<h1> – <h6>```) does not need to be hierarchical globally. HTML5 sectioning elements are used to new outlining contexts.
 Within each sectioning context, the appropriate heading hierarchy should be used for clarity (although this has no impact on the outline algorithm.
 
 ##### Traditional HTML
