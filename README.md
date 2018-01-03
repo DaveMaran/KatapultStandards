@@ -3,7 +3,7 @@
 ### This document has been produced as a guideline for all digital projects using HTML, CSS and JS.
 This is a living document and should be updated to include more tools or information when needed.
 
-For any queries please email david@katapult.co.uk
+For any queries please email websites@katapult.co.uk
 
 ---
 
@@ -873,4 +873,4 @@ All deployments pushed to the live environment from the master branch will be do
 
 ---
 
-### Produced by David Maran - Katapult (Last updated 28/02/2017)
+### Produced by David Maran - Katapult (Last updated 03/01/2018)
