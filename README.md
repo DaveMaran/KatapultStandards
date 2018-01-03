@@ -342,11 +342,11 @@ Never choose a heading level based on the global styling applied to that element
 - Classes can be stacked (and should). Take advantage of this modularity.
 - Classes are case sensitive. Only use lowercase letters for consistency.
 - Class-based CSS selectors are faster than element-based selectors.
-'''
+```
 <button class="button button--small">
     Add To Cart
 </button>
-'''
+```
 
 - Using IDs
 - IDs as #hash links
