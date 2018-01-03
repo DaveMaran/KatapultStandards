@@ -3,13 +3,13 @@
 ### This document has been produced as a guideline for all digital projects using HTML, CSS and JS.
 This is a living document and should be updated to include more tools or information when needed.
 
-For any queries please email websites@katapult.co.uk
+For any queries please email pete@katapult.co.uk
 
 ---
 
 # HTML Styling
 Styling guidelines that should be followed for all HTML code produced for any Katapult digital project.
-These are a living document and should be updated where and when necessary to keep it inline with standards required.
+This is a living document and should be updated where and when necessary to keep it inline with standards required.
 
 #### Formatting and whitespace
 
