@@ -840,7 +840,7 @@ Or the bower package [csslint](https://www.npmjs.com/package/csslint)
 ##### Specific frameworks
 
 ###### Wordpress
-For all Wordpress websites, FoundationPress(https://foundationpress.olefredrik.com/) should be used as a base. This includes all package management tools and dependencies.
+For all Wordpress websites, JOINTSWP(http://jointswp.com/) should be used as a base. This includes all package management tools and dependencies.
 
 ###### HTML
 FoundationTemplate (https://github.com/zurb/foundation-zurb-template/) should be used as a base for all systems other than Wordpress or sites not using a CMS.
