@@ -469,7 +469,7 @@ Everything else takes place inside the component or without impacting the previo
 ##### Don't use @import
 - Compared to ```<link>```, ```@import``` is slower, adds extra page requests, and can cause other unforeseen problems. Avoid them and instead opt for an alternate approach:
 - Use multiple ```<link>``` elements
-- Compile your CSS with a preprocessor like Sass or Less into a single file
+- Compile your CSS into a single file with Sass
 - Concatenate your CSS files.
 ```
 <!-- Use link elements -->
@@ -556,7 +556,7 @@ Often times we don't need to set all the values a shorthand property represents.
   border-top-right-radius: 3px;
 }
 ```
-##### Nesting in Less and Sass
+##### Nesting in Sass
 Avoid unnecessary nesting. Just because you can nest, doesn't mean you always should. Consider nesting only if you must scope styles to a parent and if there are multiple elements to be nested.
 ```
 // Without nesting
@@ -569,7 +569,7 @@ Avoid unnecessary nesting. Just because you can nest, doesn't mean you always sh
   > td { … }
 }
 ```
-#####Operators in Less and Sass
+#####Operators in Sass
 For improved readability, wrap all math operations in parentheses with a single space between values, variables, and operators.
 ```
 // Bad example
@@ -606,7 +606,7 @@ Be sure to write in complete sentences for larger comments and succinct phrases 
 - Use meaningful names; use structural or purposeful names over presentational.
 - Prefix classes based on the closest parent or base class.
 - Use ````.js-*``` classes to denote behavior (as opposed to style), but keep these classes out of your CSS.
-- It's also useful to apply many of these same rules when creating Sass and Less variable names.
+- It's also useful to apply many of these same rules when creating Sass variable names.
 ```
 /* Bad example */
 .t { ... }
