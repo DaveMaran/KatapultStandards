@@ -840,10 +840,19 @@ Or the bower package [csslint](https://www.npmjs.com/package/csslint)
 ##### Specific frameworks
 
 ###### Wordpress
-For all Wordpress websites, JOINTSWP(http://jointswp.com/) should be used as a base. This includes all package management tools and dependencies.
+For all Wordpress websites, [JOINTSWP](http://jointswp.com/) should be used as a base. This includes all package management tools and dependencies.
+
+Acceptable third-party Wordpress plugins to use are:
+* [Advanced Custom Fields](https://www.advancedcustomfields.com/)
+* [Formidable Forms](https://formidableforms.com/)
+* [Hubspot Tracking Code](https://en-gb.wordpress.org/plugins/hubspot-tracking-code/)
+* [Redirection](https://redirection.me/)
+* [Smush Image Compression](https://wordpress.org/plugins/wp-smushit/)
+* [Wordfence](https://www.wordfence.com/)
+Any third-party plugin not on this list must be verified and added before use in a client website.
 
 ###### HTML
-FoundationTemplate (https://github.com/zurb/foundation-zurb-template/) should be used as a base for all systems other than Wordpress or sites not using a CMS.
+[FoundationTemplate](https://github.com/zurb/foundation-zurb-template/) should be used as a base for all systems other than Wordpress or sites not using a CMS.
 
 
 ##### Version control
