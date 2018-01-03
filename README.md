@@ -849,6 +849,7 @@ Acceptable third-party Wordpress plugins to use are:
 * [Redirection](https://redirection.me/)
 * [Smush Image Compression](https://wordpress.org/plugins/wp-smushit/)
 * [Wordfence](https://www.wordfence.com/)
+
 Any third-party plugin not on this list must be verified and added before use in a client website.
 
 ###### HTML
