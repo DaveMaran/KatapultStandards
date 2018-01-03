@@ -849,7 +849,7 @@ FoundationTemplate (https://github.com/zurb/foundation-zurb-template/) should be
 ##### Version control
 Github will be used for all projects using version control.
 
-Setting up Github correctly for the development process is important for both easy of deployment and management between multiple members of staff/ development team.
+Setting up Github correctly for the development process is important for both ease of deployment and management between multiple members of staff/ development team.
 
 Github should be used for all project required code and not minified/ optimised assets. This should be completed within the build process for deployment. 
 
