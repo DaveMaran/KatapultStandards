@@ -569,7 +569,7 @@ Avoid unnecessary nesting. Just because you can nest, doesn't mean you always sh
   > td { … }
 }
 ```
-#####Operators in Sass
+##### Operators in Sass
 For improved readability, wrap all math operations in parentheses with a single space between values, variables, and operators.
 ```
 // Bad example
