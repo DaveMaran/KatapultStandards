@@ -80,7 +80,7 @@ As far as possible functional elements of a WordPress website should be develope
 - WordPress Widgets
 - API integrations
 
-### Nested plugins
+### Nested plugins
 
 You could go super-granular with plugins and create a plugin for _each_ custom post type. There's probably some very good reasons for doing that but to keep things a little simpler our preferred development approach is to create a single plugin for clients which includes each of the required bits of functionality. You can still keep things really modular by splitting the plugin into separate directories and files.
 
@@ -111,4 +111,5 @@ include dirname(__FILE__) . '/clientname_cpt_meta/clientname_cpt_meta-profiles.p
 // Custom Post Type: Jobs
 include dirname(__FILE__) . '/clientname_cpt/clientname_cpt-jobs.php';
 include dirname(__FILE__) . '/clientname_cpt_meta/clientname_cpt_meta-jobs.php';
+
 ```
