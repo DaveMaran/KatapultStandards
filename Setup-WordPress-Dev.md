@@ -35,14 +35,13 @@ Tags: Sass
 - Activate the theme in WordPress
 - Navigate to the theme folder in the terminal and run the following command:
 ```
-$ npm insall
-
+$ npm install
 ```
 npm install can take a while. Be patient. 
 
 ### Create the project repo locally in GitHub desktop
 - Click Add
-- Enter local path (e.g. /Users/peteclark/Sites/clientname/wp-content/themes/clientname_theme)
+- Enter local path (e.g. /Users/username/Sites/clientname/wp-content/themes/clientname_theme)
 - Click 'Create & Add Repository'
 
 ### Ignore build files
