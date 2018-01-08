@@ -68,3 +68,47 @@ While working locally run the following command in the terminal:
 $ npm run browsersync
 ```
 This will keep an eye on SASS, JS etc that needs compiling or minifying. It will also reload your browser automatically. MAMP must be running _before_ you run the command above.
+
+## 4. Bespoke plugins
+
+In addition to the theme repository we should have a repo for custom WordPress plugins. You can either create this and publish it to the Katapult GitHub account (if you have access) or clone it into /wp-content/plugins/ if you're being given access to a repo that already exists. If you are creating the plugin/repo name it {clientname}_plugins
+
+As far as possible functional elements of a WordPress website should be developed as custom plugins, rather than being included in the theme file. Technically this is not necessary but it makes for cleaner code that's easier to manage. So that's what we do. Examples of things that should be plugins, not part of the theme:
+
+- Custom post types and taxonomies
+- WordPress Shortcodes
+- WordPress Widgets
+- API integrations
+
+### Nested plugins
+
+You could go super-granular with plugins and create a plugin for _each_ custom post type. There's probably some very good reasons for doing that but to keep things a little simpler our preferred development approach is to create a single plugin for clients which includes each of the required bits of functionality. You can still keep things really modular by splitting the plugin into separate directories and files.
+
+Here's an example. The following is the main plugin file. It includes all sorts of other things.
+
+```
+<?php
+/*
+Plugin Name: Client Name — Custom Post Types and Taxonomies
+Plugin URI: https://www.katapult.co.uk
+Description: Adds custom post types which are fundamental to the site. DON'T REMOVE THIS!
+Version: 1.0
+Author: Pete Clark
+Author URI: https://www.katapult.co.uk
+*/
+
+// Import our custom taxonomies
+include dirname(__FILE__) . '/clientname_taxonomies/clientname_taxonomies.php';
+
+// Custom Post Type: Events
+include dirname(__FILE__) . '/clientname_cpt/clientname_cpt-events.php';
+include dirname(__FILE__) . '/clientname_cpt_meta/clientname_cpt_meta-events.php';
+
+// Custom Post Type: Staff profiles
+include dirname(__FILE__) . '/clientname_cpt/clientname_cpt-profiles.php';
+include dirname(__FILE__) . '/clientname_cpt_meta/clientname_cpt_meta-profiles.php';
+
+// Custom Post Type: Jobs
+include dirname(__FILE__) . '/clientname_cpt/clientname_cpt-jobs.php';
+include dirname(__FILE__) . '/clientname_cpt_meta/clientname_cpt_meta-jobs.php';
+```
