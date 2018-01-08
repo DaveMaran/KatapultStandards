@@ -15,7 +15,7 @@ When you create the admin user don't use 'admin' or 'root'. Use something like {
 
 ## 2. Creating a theme repository from Scratch
 
-** Note: The following assumes you are creating the theme repository. If you need to work on an existing theme repo skip down to the section on installing an existing theme repo**
+*Note: The following assumes you are creating the theme repository. If you need to work on an existing theme repo skip down to the section on [installing an existing theme](#3-working-with-an-existing-theme-repository) repo*
 
 ### Install and begin setup of JOINTSWP
 
