@@ -20,7 +20,7 @@ You should now be able to start the server and access your install at http://dev
 
 Finish setting up WordPress in the usual way through the browser. When you create the admin user don't use 'admin' or 'root'. Use something like {clientname}_admin_{yourinitials} and use a strong password. This removes the possibility of launching a website with admin creds set to root/root. Which would be bad.
 
-### Update the wp-config.php file
+### Update the wp-config file
 
 Once that's done add the following to the wp-config.php file under the database connection settings: 
 
