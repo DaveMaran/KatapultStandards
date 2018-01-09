@@ -16,7 +16,12 @@ Setup a host in MAMP Pro as follows:
 
 You should now be able to start the server and access your install at http://dev.real-client-domain.com:7888
 
-Finish the WordPress installation in the usual way through the browser. Once that's done add the following to the wp-config.php file under the database connection settings: 
+### Finish the WordPress installation
+Finish setting up WordPress in the usual way through the browser. When you create the admin user don't use 'admin' or 'root'. Use something like {clientname}_admin_{yourinitials} and use a strong password. This removes the possibility of launching a website with admin creds set to root/root. Which would be bad.
+
+### Update the wp-config.php file
+
+Once that's done add the following to the wp-config.php file under the database connection settings: 
 
 ```
 define('FORCE_SSL_ADMIN', false);
@@ -28,9 +33,6 @@ $_SERVER["HTTP_HOST"] = $website_url;
 define("WP_HOME", $scheme.$website_url);
 define("WP_SITEURL", $scheme.$website_url);
 ```
-
-### Admin user in dev environment
-When you create the admin user don't use 'admin' or 'root'. Use something like {clientname}_admin_{yourinitials} and use a strong password. This removes the possibility of launching a website with admin creds set to root/root. Which would be bad.
 
 ## 2. Creating a theme repository from Scratch
 
