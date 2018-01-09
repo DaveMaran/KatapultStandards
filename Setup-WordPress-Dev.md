@@ -1,14 +1,33 @@
 # WordPress development setup process
 ## Required software
-- MAMP
+- MAMP Pro
 - GitHub Desktop
 
 ## 1. Create a local WordPress install running in MAMP
-If you're not already running it, [install MAMP](https://www.mamp.info/en/downloads/) and make sure it's up to date. Set your webserver to Nginx and PHP to version 7. Get the [latest version of WordPress](https://wordpress.org/download/) and install it in your ~/Sites/{clientname}/ folder.    
+If you're not already running it, [install MAMP Pro](https://www.mamp.info/en/downloads/) and make sure it's up to date. Set your webserver to Nginx and PHP to version 7. Get the [latest version of WordPress](https://wordpress.org/download/) and install it in your ~/Sites/{clientname}/ folder.    
 
 *Note: This folder will _contain_ the project repos, rather than acting as the repo itself. To keep our repositories manageable we create one for the theme and one for the _client specific_ plugins.* But we'll get to that.
 
-Complete the installation at http://localhost/
+Setup a host in MAMP Pro as follows: 
+- Create a new host named: dev.real-client-domain.com (e.g. dev.probe-oil-tools.co.uk)
+- Create a database if you need to
+- Set the host to use Nginx
+- Add `$uri $uri/ /index.php?$args;` to the _try_files:_ field in the Nginx tab (This allows permalinks to work.)
+
+You should now be able to start the server and access your install at http://dev.real-client-domain.com:7888
+
+Finish the WordPress installation in the usual way through the browser. Once that's done add the following to the wp-config.php file under the database connection settings: 
+
+```
+define('FORCE_SSL_ADMIN', false);
+$_SERVER["HTTPS"] = 'off';
+$scheme = 'http://';
+$website_url = 'dev.real-client-domain.com:7888';
+
+$_SERVER["HTTP_HOST"] = $website_url;
+define("WP_HOME", $scheme.$website_url);
+define("WP_SITEURL", $scheme.$website_url);
+```
 
 ### Admin user in dev environment
 When you create the admin user don't use 'admin' or 'root'. Use something like {clientname}_admin_{yourinitials} and use a strong password. This removes the possibility of launching a website with admin creds set to root/root. Which would be bad.
