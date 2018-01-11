@@ -1,4 +1,13 @@
 # WordPress development setup process
+
+## Important notes
+
+- All development work must be effectively verision controlled with daily syncs to GitHub
+- GitHub repos are linked to a live dev server via [deploybot](https://github.com/katapultstudios/KatapultStandards#deploymentintegration-deploybot) 
+- WordPress themes are for styles
+- [WordPress plugins](#4-bespoke-plugins) are for functionality 
+
+
 ## Required software
 - MAMP Pro
 - GitHub Desktop
