@@ -24,51 +24,6 @@ This is a living document and should be updated where and when necessary to keep
 <IMG SRC='#'>
 ```
 
-### Attribute order
-
-Use the order of attributes to improve the developer experience (the browser doesn’t care). Simple rules:
-- Put class attribute first (developers read/write this most often).
-- Put id attribute second (important if it’s defined).
-- Everything else is alphabetical.
-- Put data-* attributes last (alphabetical).
-```
-<div class="" id="" onclick="" data-abc="" data-xyz="">
-<form class="" id="" action="" method="">
-```
-
-### Exceptions
-
-When an attribute is critical to defining an element put it first to improve readability:
-```
-<!-- The "type" defines the element's behavior. -->
-<button type="" class=""></button>
-```
-```
-<!-- Put "src" before "alt". -->
-<img class="" src="" alt="">
-```
-```
-<!-- The "type" defines the element's rendering. -->
-<input type="text" class="" id="" disabled name="" placeholder="" readonly value="">
-```
-
-### Attribute overload
-
-When an element has too many attributes it’s hard to read. Break attributes onto lines:
-```
-<button
-type="button"
-class="button"
-data-loading="Loading..."
-data-x="123"
-data-y="789"
->
-    Send Coordinates
-</button>
-```
-
-Some people probably hate that the attributes aren’t indented. I think it’s easier to read the DOM structure with them outdented and the closing ``` >```  on its own line.
-
 ### Indentation
 
 Use 4 spaces (not tabs) for indentation.
@@ -80,7 +35,7 @@ Use 4 spaces (not tabs) for indentation.
 
 ### Void Elements
 
-Don’t use a trailing slash anymore. Yeya, HTML5!
+HTML5 doesn't require trailing slashes on void elements.
 ```
 <!-- Good -->
 <br>
@@ -98,148 +53,6 @@ Don’t use a trailing slash anymore. Yeya, HTML5!
 <link />
 <meta />
 ```
-
-### Optional Tags
-Optional tags should always be closed for readability — even if not strictly required by the HTML spec.
-```
-<!-- Good -->
-<ul>
-    <li>One</li>
-    <li>Two</li>
-</ul>
-
-<!-- Bad -->
-<ul>
-    <li>One
-    <li>Two
-</ul>
-```
-
-### Comments
-
-Don’t use HTML comments.
-```
-<!-- I don't need to be here -->
-<p>Lorem ipsum dolor sit amet.</p>
-```
-
-##### Exception
-Where HTML code is filtered out during the build process and is not visible on distribution versions. Most likely to be used in base HTML builds not incorporating a CMS.
-
-Why not?
-- With modern developer tools, the need to “View Source” is rare today.
-- Developer comments should be secret (HTML comments are visible in the source).
-- Don’t slow down users by making them download invisible comments.
-
-##### Suggestion
-Comments in HTML should always wrapped in backend/templating language, or stripped out during HTML minification. Example:
-```
-<?php
-// GravDept:
-// See: Issue 12345
-?>
-<p>Lorem ipsum dolor sit amet.</p>
-```
-
-### Nesting
-Markup has a hierarchy, which creates parent/child relationships between elements. Maintaining an accurate hierarchy is essential for readability and avoiding validation issues.
-
-#### Nest or not?
-
-```
-Write elements without attributes on one line:
-<p>The quick brown fox jumps.</p>
-```
-
-Write elements with attributes nested:
-```
-<p class="lead">
-    The quick brown fox jumps.
-</p>
-```
-
-Write elements with multi-line content nested:
-```
-<p>
-    The quick brown fox jumps.
-    Do or do not — there is no try.
-</p>
-```
-
-#### Single-child nesting
-- Child elements may be most readable without whitespace. Example:
-- Each line is under 80 characters.
-- Each line is nested less than two levels deeper.
-```
-<ul>
-    <li>One</li>
-    <li>Two</li>
-    <li>Three</li>
-</ul>
-```
-
-A good example of multi-level HTML that still benefits from single-line nesting is anchors within lists:
-```
-<ul>
-    <li><a href="#">One</a></li>
-    <li><a href="#">Two</a></li>
-    <li><a href="#">Three</a></li>
-</ul>
-```
-
-#### Multi-child nesting
-Use a single blank line to break up complex hierarchies. Separate child elements with a single blank line.
-```
-<ul>
-    <li>
-        <h2>Title</h2>
-        <p>Lorem ipsum dolor.</p>
-    </li>
-
-    <li>
-        <h2>Title</h2>
-        <p>Lorem ipsum dolor.</p>
-    </li>
-
-    <li>
-        <h2>Title</h2>
-        <p>Lorem ipsum dolor.</p>
-    </li>
-</ul>
-```
-
-#### Hybrid nesting
-In practice, single-line and multi-line syntaxes are both used. The goal is optimum readability for the given content. This is more important than strictly following a single syntax.
-```
-<ul>
-    <li>
-        <h2>Title</h2>
-        <p>Lorem ipsum dolor sit amet.</p>
-    </li>
-
-    <li>
-        <h2>Title</h2>
-
-        <p class="lede">
-            Lorem ipsum dolor sit amet.
-        </p>
-
-        <p>
-            Nulla facilisi. Duis aliquet egestas purus in blandit.
-            Curabitur vulputate, ligula lacinia scelerisque tempor,
-            lacus lacus ornare ante, ac egestas est urna sit amet arcu.
-        </p>
-    </li>
-
-    <li>
-        <h2>Title</h2>
-        <p>Lorem ipsum dolor sit amet.</p>
-    </li>
-</ul>
-```
-
-### Grouping elements
-Complex markup can take hundreds of lines to describe relatively simple content. From an authoring perspective, this can be difficult to scan and read. Adding several line-breaks between large sets of markup improves readability for developers. Whitespace characters are collapsed in HTML so there is no visual output, and the additional bytes are negligible.
 
 ### Semantics
 Above all, remember that HTML is a markup language. The elements we use to describe content infer hierarchical and descriptive meaning. These inferences should not be taken lightly because this metadata is read and understood by search engines. Using structured markup accurately and consistently helps man and machine accessing the site use it better.
@@ -348,7 +161,7 @@ Never choose a heading level based on the global styling applied to that element
 </button>
 ```
 
-- Using IDs
+#### Using IDs
 - IDs as #hash links
 - Hash-linking is probably the only way IDs should be used today.
 ```
@@ -362,36 +175,13 @@ Never use IDs for CSS styling because:
 IDs must be unique per document. They’re not suitable for styling because they bind markup:CSS in a 1:1 relationship.
 IDs add 100 to CSS specificity (classes add 10 specificity) so they blow away virtually all other styling.
 
-#### Snippets
-
-HTML Starting point
-```
-<!doctype html>
-<html lang="en-us">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title></title>
-        <link rel="stylesheet" href="css/app.css">
-    </head>
-
-    <body>
-        <!--[if lte IE 9]>
-            <div class="browser-warning">You’re using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</div>
-        <![endif]-->
-
-        <h1>Hello World</h1>
-    </body>
-</html>
-```
 ---
 
 # CSS
 ### CSS Principles
 
 ##### Syntax
-- Use soft tabs with four spaces.
+- Use spaces rather than tabs.
 - When grouping selectors, keep individual selectors to a single line.
 - Include one space before the opening brace of declaration blocks for legibility.
 - Place closing braces of declaration blocks on a new line.
