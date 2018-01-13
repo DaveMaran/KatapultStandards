@@ -440,8 +440,8 @@ This branch is for testing and checking that all code runs in the staging enviro
 
 ---
 
-# Deployment ([DeployBot](http://deploybot.com))
-With the use of DeployBot, all code placed into the development branch will be sent to the development server via SSH automatically. This allows any code changes made in the development branch to be seen online by other members of staff.
+# Deployment
+With the use of [DeployBot](http://deploybot.com), all code placed into the development branch will be sent to the development server via SSH automatically. This allows any code changes made in the development branch to be seen online by other members of staff.
 
 An automatic deployment script shall be used to deploy the staging/testing branches to their environments as this would be dependant on the client and the environment they are currently using. This will be done either automatically or manual depending on the server details and access put in place. 
 
