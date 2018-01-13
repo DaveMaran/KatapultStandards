@@ -6,7 +6,16 @@ This is a living document and should be updated to include more tools or informa
 For any queries please email pete@katapult.co.uk
 
 ---
+# Table of contents
+- [HTML Styling](#html-styling)
+- [CSS](#css)
+- [JavaScript](#javascript)
+- [General standards](#general-standards)
+- [Tooling](#tooling)
+- [Version control](#version-control)
+- [Deployment](#deployment)
 
+---
 # HTML Styling
 Styling guidelines that should be followed for all HTML code produced for any Katapult digital project.
 This is a living document and should be updated where and when necessary to keep it inline with standards required.
@@ -388,62 +397,49 @@ Make sure a src is still set as a fallback in case srcset is not supported.
 Measuring project speed
 Used GTMetrix.com for the main website speed test.
 
-##### Tooling
-###### Task runners
+---
+
+# Tooling
+## Task runners
 Gulp or Grunt task runner can be used. All code and commands must be documented with simple installation and run commands. 
 
 [Setup Gulp](https://github.com/gulpjs/gulp)
 [Setup Grunt](https://gruntjs.com/)
 
-###### Dependency Manager
+## Dependency Manager
 All code libraries and frameworks for front-end code should be pull into the repository via a dependency manager. NPM is useable, Bower.io is the recommended manager.
 [Setup Bower](https://bower.io/)
 
-###### Linting
+## Linting
 JS linting should make use of http://jslint.com/
 Or the bower package [JsLint](https://github.com/sasidhar/bower-jslint)
 
 CSS linting should make use of http://csslint.net/
 Or the bower package [csslint](https://www.npmjs.com/package/csslint)
 
-##### Specific frameworks
+---
 
-###### Wordpress
-For all Wordpress websites, [JOINTSWP](http://jointswp.com/) should be used as a base. This includes all package management tools and dependencies.
-
-Acceptable third-party Wordpress plugins to use are:
-* [Advanced Custom Fields](https://www.advancedcustomfields.com/)
-* [Formidable Forms](https://formidableforms.com/)
-* [Hubspot Tracking Code](https://en-gb.wordpress.org/plugins/hubspot-tracking-code/)
-* [Redirection](https://redirection.me/)
-* [Smush Image Compression](https://wordpress.org/plugins/wp-smushit/)
-* [Wordfence](https://www.wordfence.com/)
-
-Any third-party plugin not on this list must be verified and added before use in a client website.
-
-###### HTML
-[FoundationTemplate](https://github.com/zurb/foundation-zurb-template/) should be used as a base for all systems other than Wordpress or sites not using a CMS.
-
-
-##### Version control
+# Version control
 Github will be used for all projects using version control.
 
 Setting up Github correctly for the development process is important for both ease of deployment and management between multiple members of staff/ development team.
 
 Github should be used for all project required code and not minified/ optimised assets. This should be completed within the build process for deployment. 
 
-###### Master branch
+## Master branch
 This branch will be the location of all production ready code. All testing and staging environment must have been completed, before anything is placed into this branch.  A pull request must be created for any code merging from ‘staging’ to the Master branch.
 
-###### Development branch
+## Development branch
 This branch is where all development work should be placed. All new branches produced should be merged into this area once completed. This allows the development team to work from one up-to-date code bank. 
 
 Multiple branches can be used for development, if used they must be merged back to the development branch before being pulled into the staging/testing branch.
 
-###### Staging/Testing branch
+## Staging/Testing branch
 This branch is for testing and checking that all code runs in the staging environment correctly before being pushed to the master branch. Any code issues found within this testing phase must be placed as an issue in GitHub.
 
-##### Deployment/Integration ([DeployBot](http://deploybot.com))
+---
+
+# Deployment ([DeployBot](http://deploybot.com))
 With the use of DeployBot, all code placed into the development branch will be sent to the development server via SSH automatically. This allows any code changes made in the development branch to be seen online by other members of staff.
 
 An automatic deployment script shall be used to deploy the staging/testing branches to their environments as this would be dependant on the client and the environment they are currently using. This will be done either automatically or manual depending on the server details and access put in place. 

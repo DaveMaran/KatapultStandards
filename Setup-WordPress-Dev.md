@@ -44,13 +44,13 @@ define("WP_HOME", $scheme.$website_url);
 define("WP_SITEURL", $scheme.$website_url);
 ```
 
-## 2. Creating a theme repository from Scratch
+## 2. If creating a theme repository from Scratch
 
 *Note: The following assumes you are creating the theme repository. If you need to work on an existing theme repo skip down to the section on [installing an existing theme](#3-working-with-an-existing-theme-repository) repo*
 
 ### Install and begin setup of JOINTSWP
 
-We use JOINTSWP as a starting point for our themes. Download the [SASS version of JOINTSWP](http://jointswp.com/) and decompress the archive in the WordPress themes folder. Rename the folder to {clientname}_theme
+We use JOINTSWP as a starting point for our themes. This includes all package management tools and dependencies. Download the [SASS version of JOINTSWP](http://jointswp.com/) and decompress the archive in the WordPress themes folder. Rename the folder to {clientname}_theme
 
 Update the theme info in style.css with something similar to the following:
 ```
@@ -84,7 +84,7 @@ npm install can take a while. Be patient.
 - Set the description to _A custom WordPress theme for the use of {Client Name}_
 - Click 'Publish Repository'
 
-## 3. Working with an existing theme repository
+## 3. If working with an existing theme repository
 
 ### Install WordPress locally
 If you are being added to a theme repository to carry out work on it you should start by installing WordPress as above. 
@@ -144,3 +144,15 @@ include dirname(__FILE__) . '/clientname_cpt/clientname_cpt-jobs.php';
 include dirname(__FILE__) . '/clientname_cpt_meta/clientname_cpt_meta-jobs.php';
 
 ```
+
+## 5. Third-party plugins
+
+Acceptable third-party Wordpress plugins to use are:
+* [Advanced Custom Fields](https://www.advancedcustomfields.com/)
+* [Formidable Forms](https://formidableforms.com/)
+* [Hubspot Tracking Code](https://en-gb.wordpress.org/plugins/hubspot-tracking-code/)
+* [Redirection](https://redirection.me/)
+* [Smush Image Compression](https://wordpress.org/plugins/wp-smushit/)
+* [Wordfence](https://www.wordfence.com/)
+
+Any third-party plugin not on this list must be verified and added before use in a client website.
