@@ -391,26 +391,19 @@ HTML Starting point
 ### CSS Principles
 
 ##### Syntax
-- Use soft tabs with four spaces—they're the only way to guarantee code renders the same in any environment.
+- Use soft tabs with four spaces.
 - When grouping selectors, keep individual selectors to a single line.
 - Include one space before the opening brace of declaration blocks for legibility.
 - Place closing braces of declaration blocks on a new line.
 - Include one space after : for each declaration.
 - Each declaration should appear on its own line for more accurate error reporting.
 - End all declarations with a semi-colon. The last declaration's is optional, but your code is more error prone without it.
-- Comma-separated property values should include a space after each comma (e.g., box-shadow).
-- Don't include spaces after commas within rgb(), rgba(), hsl(), hsla(), or rect() values. This helps differentiate multiple color values (comma, no space) from multiple property values (comma with space).
-- Don't prefix property values or color parameters with a leading zero (e.g., .5 instead of 0.5 and -.5px instead of -0.5px).
-- Lowercase all hex values, e.g., #fff. Lowercase letters are much easier to discern when scanning a document as they tend to have more unique shapes.
-- Use shorthand hex values where available, e.g., #fff instead of #ffffff.
-- Quote attribute values in selectors, e.g., input[type="text"]. They’re only optional in some cases, and it’s a good practice for consistency.
 - Avoid specifying units for zero values, e.g., margin: 0; instead of margin: 0px;.
 ```
 /* Bad CSS */
 .selector, .selector-secondary, .selector[type=text] {
   padding:15px;
   margin:0px 0px 15px;
-  background-color:rgba(0, 0, 0, 0.5);
   box-shadow:0px 1px 2px #CCC,inset 0 1px 0 #FFFFFF
 }
 ```
@@ -421,69 +414,22 @@ HTML Starting point
 .selector[type="text"] {
   padding: 15px;
   margin-bottom: 15px;
-  background-color: rgba(0,0,0,.5);
   box-shadow: 0 1px 2px #ccc, inset 0 1px 0 #fff;
 }
 ```
 ##### Declaration order
-Related property declarations should be grouped together following the order:
-- Positioning
-- Box model
-- Typographic
-- Visual
+Order and grouping of property declarations is not of paramount importance but, ideally, you would follow the order [specified in SMACSS](https://smacss.com/book/formatting#grouping):
+- Box
+- Border
+- Background
+- Text
+- Other
 
-Positioning comes first because it can remove an element from the normal flow of the document and override box model related styles. The box model comes next as it dictates a component's dimensions and placement.
-Everything else takes place inside the component or without impacting the previous two sections, and thus they come last.
-```
-.declaration-order {
-  /* Positioning */
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 100;
-
-  /* Box-model */
-  display: block;
-  float: right;
-  width: 100px;
-  height: 100px;
-
-  /* Typography */
-  font: normal 13px "Helvetica Neue", sans-serif;
-  line-height: 1.5;
-  color: #333;
-  text-align: center;
-
-  /* Visual */
-  background-color: #f5f5f5;
-  border: 1px solid #e5e5e5;
-  border-radius: 3px;
-
-  /* Misc */
-  opacity: 1;
-}
-```
-
-##### Don't use @import
-- Compared to ```<link>```, ```@import``` is slower, adds extra page requests, and can cause other unforeseen problems. Avoid them and instead opt for an alternate approach:
-- Use multiple ```<link>``` elements
-- Compile your CSS into a single file with Sass
-- Concatenate your CSS files.
-```
-<!-- Use link elements -->
-<link rel="stylesheet" href="core.css">
-```
-```
-<!-- Avoid @imports -->
-<style>
-  @import url("more.css");
-</style>
-```
+##### Compile multiple files with SASS
+Generally speaking you should compile your CSS into a single file with Sass. If there's a good reason to use multiple .css files then use multiple ```<link>``` elements rather than ```@import```. 
 
 ##### Media query placement
-Place media queries as close to their relevant rule sets whenever possible. Don't bundle them all in a separate stylesheet or at the end of the document. Doing so only makes it easier for folks to miss them in the future. Here's a typical setup.
+Place media queries near to their relevant rule sets. Don't place them in a separate stylesheet or at the end of the document. Example:
 ```
 .element { ... }
 .element-avatar { ... }
@@ -496,38 +442,6 @@ Place media queries as close to their relevant rule sets whenever possible. Don'
 }
 ```
 
-##### Prefixed properties
-When using vendor prefixed properties, indent each property such that the declaration's value lines up vertically for easy multi-line editing.
-In Sublime Text, ```use Selection → Add Previous Line (⌃⇧↑) and Selection → Add Next Line (⌃⇧↓).```
-```
-/* Prefixed properties */
-.selector {
-  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
-          box-shadow: 0 1px 2px rgba(0,0,0,.15);
-}
-```
-
-##### Single declarations
-In instances where a rule set includes only one declaration, consider removing line breaks for readability and faster editing. Any rule set with multiple declarations should be split to separate lines.
-The key factor here is error detection — e.g., a CSS validator stating you have a syntax error on Line 183. With a single declaration, there's no missing it. With multiple declarations, separate lines is a must for your sanity.
-```
-/* Single declarations on one line */
-.span1 { width: 60px; }
-.span2 { width: 140px; }
-.span3 { width: 220px; }
-
-/* Multiple declarations, one per line */
-.sprite {
-  display: inline-block;
-  width: 16px;
-  height: 15px;
-  background-image: url(../img/sprite.png);
-}
-
-.icon           { background-position: 0 0; }
-.icon-home      { background-position: 0 -20px; }
-.icon-account   { background-position: 0 -40px; }
-```
 ##### Shorthand notation
 Strive to limit use of shorthand declarations to instances where you must explicitly set all the available values. Common overused shorthand properties include:
 - padding
@@ -569,22 +483,9 @@ Avoid unnecessary nesting. Just because you can nest, doesn't mean you always sh
   > td { … }
 }
 ```
-##### Operators in Sass
-For improved readability, wrap all math operations in parentheses with a single space between values, variables, and operators.
-```
-// Bad example
-.element {
-  margin: 10px 0 @variable*2 10px;
-}
 
-// Good example
-.element {
-  margin: 10px 0 (@variable * 2) 10px;
-}
-```
 ##### Comments
-Code is written and maintained by people. Ensure your code is descriptive, well commented, and approachable by others. Great code comments convey context or purpose. Do not simply reiterate a component or class name.
-Be sure to write in complete sentences for larger comments and succinct phrases for general notes.
+To help with maintaining and updating code please ensure your code is descriptive and well commented. Great code comments convey context or purpose. Be sure to write in complete sentences for larger comments and succinct phrases for general notes.
 ```
 /* Bad example */
 /* Modal header */
@@ -600,13 +501,10 @@ Be sure to write in complete sentences for larger comments and succinct phrases 
 ```
 
 ##### Class names
-- Keep classes lowercase, use dashes and underscores using the BEM methodology. Dashes serve as natural breaks in related class (e.g., ```.btn``` and ```.btn-danger```).
-- Avoid excessive and arbitrary shorthand notation. ```.btn``` is useful for button, but ```.s``` doesn't mean anything.
-- Keep classes as short and succinct as possible.
+- Keep classes lowercase, use dashes and underscores using either the SMACSS or BEM methodology. 
+- Don't oversimplify. ```.btn``` is fine, but ```.b``` doesn't mean anything.
 - Use meaningful names; use structural or purposeful names over presentational.
-- Prefix classes based on the closest parent or base class.
-- Use ````.js-*``` classes to denote behavior (as opposed to style), but keep these classes out of your CSS.
-- It's also useful to apply many of these same rules when creating Sass variable names.
+- Use ```.js-*``` classes to denote behavior (as opposed to style), but keep these classes out of your CSS.
 ```
 /* Bad example */
 .t { ... }
@@ -618,52 +516,9 @@ Be sure to write in complete sentences for larger comments and succinct phrases 
 .important { ... }
 .tweet-header { ... }
 ```
-##### Selectors
-Use classes over generic element tag for optimum rendering performance.
-Avoid using several attribute selectors (e.g., ```[class^="..."]```) on commonly occuring components. Browser performance is known to be impacted by these.
-Keep selectors short and strive to limit the number of elements in each selector to three.
-Scope classes to the closest parent only when necessary (e.g., when not using prefixed classes).
-```
-/* Bad example */
-span { ... }
-.page-container #stream .stream-item .tweet .tweet-header .username { ... }
-.avatar { ... }
 
-/* Good example */
-.avatar { ... }
-.tweet-header .username { ... }
-.tweet .avatar { ... }
-```
-##### Organisation
-- Organize sections of code by component.
-- Develop a consistent commenting hierarchy.
-- Use consistent white space to your advantage when separating sections of code for scanning larger documents.
-- When using multiple CSS files, break them down by component instead of page. Pages can be rearranged and components moved.
-```
-/*
- * Component section heading
- */
-
-.element { ... }
-
-/*
- * Component section heading
- *
- * Sometimes you need to include optional context for the entire component. Do that up here if it's important enough.
- */
-
-.element { ... }
-
-/* Contextual sub-component or modifer */
-.element-heading { ... }
-```
-
-##### Editor preferences
-Set your editor to the following settings to avoid common code inconsistencies and dirty diffs:
-- Use soft-tabs set to two spaces.
-- Trim trailing white space on save.
-- Set encoding to UTF-8.
-- Add new line at end of files.
+##### Organisation through 
+We design in a modular way in which functional parts (we call them **components**) of the site are reused many times on different page templates. To help with this approach it is useful to create a separate CSS file for each component and combine these with SASS.    
 
 ##### BEM
 BEM (Block, Element, Modifier) from Yandex allows developers to create a simple naming convention helping make your CSS more modular and portable.
@@ -679,7 +534,6 @@ Further Reading
 
 ##### CSS Tools
 
-
 ##### SASS
 
 [Available from Sass-lang](http://sass-lang.com/)
@@ -693,12 +547,6 @@ Further Reading
 Should be used to make all browsers render elements more consistently and in line with modern standards.
 [Find out about Normalize](https://necolas.github.io/normalize.css/)
 
-##### AutoPrefixer 
-This should be used to parse CSS and add vendor prefixes to all CSS rules using values from Can I Use. Recommended by Google. Write your CSS rules without vendor prefixes (in fact, forget about them entirely
-
-##### Critical CSS 
-TBC
-
 ##### CSS Frameworks
 Framework of use is [Foundation 6](http://foundation.zurb.com/)
 [Documentation available here](http://foundation.zurb.com/sites/docs/)
@@ -707,8 +555,6 @@ Framework of use is [Foundation 6](http://foundation.zurb.com/)
 ---
 
 # JavaScript
-#### JavaScript Principles
-TBC
 
 #### Frameworks
 [Base Library - jQuery](https://jquery.com/)
@@ -748,76 +594,9 @@ Other sizes can be used, however these are the recommended ones.
 Displays with a high Pixel Density will use whichever image is best for the size and density.
 Make sure a src is still set as a fallback in case srcset is not supported. 
 
-##### Optimisation 
-Image optimisation should be completed in the deployment stage of a website.
-Either using an automated task runner such as [Gulp-imagemin](https://www.npmjs.com/package/gulp-imagemin)
-```$ npm install --save-dev gulp-imagemin```
- 
-Usage :
-```
-const gulp = require('gulp');
-const imagemin = require('gulp-imagemin');
- 
-gulp.task('default', () =>
-    gulp.src('src/images/*')
-        .pipe(imagemin())
-        .pipe(gulp.dest('dist/images'))
-);
-```
-
-Software item like  [ImageOptim](https://imageoptim.com/mac) can be used to perform the task manually.
-
-##### Fonts
-[Typekit](http://typekit.com) and [Google fonts](http://fonts.google.com) is the recommended service to use for Fonts on a website.
-Custom or bought fonts can be used through their own CDN provided by the font reseller.
-
-Designers & developers to should try to limit the font use to a minimum of three custom fonts per a website. This does not include fonts that are standard on a web enabled device. 
-
-Fonts should be loaded asynchronously where possible unless they alter how a page is viewed from the initial view. E.g. flash of styling - delay the sites load to stop this if it is required - not recommended, however used where necessary. 
-
 ##### Performance
 Measuring project speed
 Used GTMetrix.com for the main website speed test.
-
-##### Techniques
-
-Enable Gzip
-```
-<ifModule mod_gzip.c>
-mod_gzip_on Yes
-mod_gzip_dechunk Yes
-mod_gzip_item_include file .(html?|txt|css|js|php|pl)$
-mod_gzip_item_include handler ^cgi-script$
-mod_gzip_item_include mime ^text/.*
-mod_gzip_item_include mime ^application/x-javascript.*
-mod_gzip_item_exclude mime ^image/.*
-mod_gzip_item_exclude rspheader ^Content-Encoding:.*gzip.*
-</ifModule>
-```
-Enable Leverage browser caching
-```
-## EXPIRES CACHING ##
-<IfModule mod_expires.c>
-ExpiresActive On
-ExpiresByType image/jpg "access plus 1 year"
-ExpiresByType image/jpeg "access plus 1 year"
-ExpiresByType image/gif "access plus 1 year"
-ExpiresByType image/png "access plus 1 year"
-ExpiresByType text/css "access plus 1 month"
-ExpiresByType application/pdf "access plus 1 month"
-ExpiresByType text/x-javascript "access plus 1 month"
-ExpiresByType application/x-shockwave-flash "access plus 1 month"
-ExpiresByType image/x-icon "access plus 1 year"
-ExpiresDefault "access plus 2 days"
-</IfModule>
-## EXPIRES CACHING ##
-Accessibility
-Accessibility checklist
-Use the following checklist for accessibility compliance
-http://a11yproject.com/checklist.html
-```
-
-Accessibility tools available http://a11yproject.com/resources.html
 
 ##### Tooling
 ###### Task runners
@@ -883,4 +662,4 @@ All deployments pushed to the live environment from the master branch will be do
 
 ---
 
-### Produced by David Maran - Katapult (Last updated 03/01/2018)
+### Produced by Pete Clark - Katapult (Last updated 13/01/2018)
