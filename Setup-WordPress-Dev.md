@@ -3,7 +3,7 @@
 ## Important notes
 
 - All development work must be effectively verision controlled and pushed to GitHub every 2-3 days. 
-- GitHub repos are linked to a live dev server via [deploybot](https://github.com/katapultstudios/KatapultStandards#deploymentintegration-deploybot)
+- GitHub repos are linked to a live dev server via [deploybot](https://github.com/katapultstudios/KatapultStandards#deployment)
 - Repos are for Themes and Plugins, _not_ WordPress core files 
 - WordPress themes are for styles
 - [WordPress plugins](#4-bespoke-plugins) are for functionality
