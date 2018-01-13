@@ -402,7 +402,7 @@ Make sure a src is still set as a fallback in case srcset is not supported.
 
 ## Performance
 Measuring project speed
-Used GTMetrix.com for the main website speed test.
+Used [GTMetrix.com](GTMetrix.com) for the main website speed test.
 
 ---
 
