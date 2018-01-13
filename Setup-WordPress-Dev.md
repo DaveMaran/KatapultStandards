@@ -2,15 +2,17 @@
 
 ## Important notes
 
-- All development work must be effectively verision controlled with daily syncs to GitHub
-- GitHub repos are linked to a live dev server via [deploybot](https://github.com/katapultstudios/KatapultStandards#deploymentintegration-deploybot) 
+- All development work must be effectively verision controlled and pushed to GitHub every 2-3 days. 
+- GitHub repos are linked to a live dev server via [deploybot](https://github.com/katapultstudios/KatapultStandards#deploymentintegration-deploybot)
+- Repos are for Themes and Plugins, _not_ WordPress core files 
 - WordPress themes are for styles
-- [WordPress plugins](#4-bespoke-plugins) are for functionality 
-
+- [WordPress plugins](#4-bespoke-plugins) are for functionality
+- For consistency we use Nginx for all WordPress projects
 
 ## Required software
-- MAMP Pro
-- GitHub Desktop
+We use the following software internally. External developers may use alternative tools if they prefer.
+- [MAMP Pro](https://www.mamp.info/en/mamp-pro/)
+- [GitHub Desktop](https://desktop.github.com/)
 
 ## 1. Create a local WordPress install running in MAMP
 If you're not already running it, [install MAMP Pro](https://www.mamp.info/en/downloads/) and make sure it's up to date. Set your webserver to Nginx and PHP to version 7. Get the [latest version of WordPress](https://wordpress.org/download/) and install it in your ~/Sites/{clientname}/ folder.    
@@ -18,12 +20,12 @@ If you're not already running it, [install MAMP Pro](https://www.mamp.info/en/do
 *Note: This folder will _contain_ the project repos, rather than acting as the repo itself. To keep our repositories manageable we create one for the theme and one for the _client specific_ plugins.* But we'll get to that.
 
 Setup a host in MAMP Pro as follows: 
-- Create a new host named: dev.real-client-domain.com (e.g. dev.probe-oil-tools.co.uk)
+- Create a new host named: local.real-client-domain.com (e.g. local.katapult.co.uk)
 - Create a database if you need to
 - Set the host to use Nginx
 - Add `$uri $uri/ /index.php?$args;` to the _try_files:_ field in the Nginx tab (This allows permalinks to work.)
 
-You should now be able to start the server and access your install at http://dev.real-client-domain.com:7888
+You should now be able to start the server and access your install at http://local.real-client-domain.com:7888
 
 ### Finish the WordPress installation
 
@@ -31,13 +33,13 @@ Finish setting up WordPress in the usual way through the browser. When you creat
 
 ### Update the wp-config file
 
-Once that's done add the following to the wp-config.php file under the database connection settings: 
+Add the following to the wp-config.php file under the database connection settings: 
 
 ```
 define('FORCE_SSL_ADMIN', false);
 $_SERVER["HTTPS"] = 'off';
 $scheme = 'http://';
-$website_url = 'dev.real-client-domain.com:7888';
+$website_url = 'local.real-client-domain.com:7888';
 
 $_SERVER["HTTP_HOST"] = $website_url;
 define("WP_HOME", $scheme.$website_url);
@@ -55,8 +57,8 @@ We use JOINTSWP as a starting point for our themes. This includes all package ma
 Update the theme info in style.css with something similar to the following:
 ```
 /******************************************************************
-Theme Name: Client Name
-Description: A custom WordPress theme for the sole use of Client Name
+Theme Name: {Client Name}
+Description: A custom WordPress theme for the sole use of {Client Name}
 Author: Pete Clark
 Author URI: https://www.katapult.co.uk
 Version: 0.1 (Development)
@@ -87,7 +89,7 @@ npm install can take a while. Be patient.
 ## 3. If working with an existing theme repository
 
 ### Install WordPress locally
-If you are being added to a theme repository to carry out work on it you should start by installing WordPress as above. 
+If you are being added to a theme repository to carry out work on it you should start by [installing WordPress](#1-create-a-local-wordpress-install-running-in-mamp) as above. 
 
 ### Clone the theme repository from GitHub
 Using GitHub Desktop you should be able to clone the theme repository directly into the /wp-content/themes/ directory of your local install where you'll be able to work on it. 
@@ -113,7 +115,7 @@ As far as possible functional elements of a WordPress website should be develope
 
 ### Nested plugins
 
-You could go super-granular with plugins and create a plugin for _each_ custom post type. There's probably some very good reasons for doing that but to keep things a little simpler our preferred development approach is to create a single plugin for clients which includes each of the required bits of functionality. You can still keep things really modular by splitting the plugin into separate directories and files.
+You could go super-granular with plugins and create a plugin for _each_ custom post type. There's probably some good reasons for doing that but to keep things a little simpler our preferred development approach is to create a single plugin for clients which includes each of the required bits of functionality. You can still keep things really modular by splitting the plugin into separate directories and files.
 
 Here's an example. The following is the main plugin file. It includes all sorts of other things.
 
@@ -156,3 +158,6 @@ Acceptable third-party Wordpress plugins to use are:
 * [Wordfence](https://www.wordfence.com/)
 
 Any third-party plugin not on this list must be verified and added before use in a client website.
+---
+### Produced by Pete Clark - Katapult (Last updated 13/01/2018)
+
