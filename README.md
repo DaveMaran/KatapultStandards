@@ -7,7 +7,7 @@ For any queries please email pete@katapult.co.uk
 
 ---
 # Table of contents
-- [HTML Styling](#html-styling)
+- [HTML](#html)
 - [CSS](#css)
 - [JavaScript](#javascript)
 - [General standards](#general-standards)
@@ -16,11 +16,11 @@ For any queries please email pete@katapult.co.uk
 - [Deployment](#deployment)
 
 ---
-# HTML Styling
+# HTML
 Styling guidelines that should be followed for all HTML code produced for any Katapult digital project.
 This is a living document and should be updated where and when necessary to keep it inline with standards required.
 
-#### Formatting and whitespace
+## Formatting and whitespace
 
 - Lowercase tag name
 - Lowercase attribute name
@@ -33,7 +33,7 @@ This is a living document and should be updated where and when necessary to keep
 <IMG SRC='#'>
 ```
 
-### Indentation
+## Indentation
 
 Use 4 spaces (not tabs) for indentation.
 ```
@@ -42,7 +42,7 @@ Use 4 spaces (not tabs) for indentation.
 <ul>
 ```
 
-### Void Elements
+## Void Elements
 
 HTML5 doesn't require trailing slashes on void elements.
 ```
@@ -63,7 +63,7 @@ HTML5 doesn't require trailing slashes on void elements.
 <meta />
 ```
 
-### Semantics
+## Semantics
 Above all, remember that HTML is a markup language. The elements we use to describe content infer hierarchical and descriptive meaning. These inferences should not be taken lightly because this metadata is read and understood by search engines. Using structured markup accurately and consistently helps man and machine accessing the site use it better.
 
 Use HTML5 elements where appropriate:
@@ -92,11 +92,11 @@ However, like all generic elements they should be qualified with a class/ID to d
 </header>
 ```
 
-### Document outline
+## Document outline
 The document hierarchy follows the HTML5 outlining algorithm. The heading outline (```<h1> – <h6>```) does not need to be hierarchical globally. HTML5 sectioning elements are used to new outlining contexts.
 Within each sectioning context, the appropriate heading hierarchy should be used for clarity (although this has no impact on the outline algorithm.
 
-##### Traditional HTML
+### Traditional HTML
 Traditional HTML authoring has a strict reliance on creating a universal document hierarchy. This is often difficult to maintain if content or modules are used in multiple contexts. This is not recommended today.
 ```
 <div class="primary">
@@ -157,9 +157,9 @@ Never choose a heading level based on the global styling applied to that element
 </aside>
 ```
 
-### Conventions
+## Conventions
 
-#### Using classes
+### Using classes
 - Classes have no effect on semantics. They do affect extensibility.
 - Classes can be stacked (and should). Take advantage of this modularity.
 - Classes are case sensitive. Only use lowercase letters for consistency.
@@ -170,7 +170,7 @@ Never choose a heading level based on the global styling applied to that element
 </button>
 ```
 
-#### Using IDs
+### Using IDs
 - IDs as #hash links
 - Hash-linking is probably the only way IDs should be used today.
 ```
@@ -179,7 +179,7 @@ Never choose a heading level based on the global styling applied to that element
 </a>
 ```
 
-#### IDs in CSS
+### IDs in CSS
 Never use IDs for CSS styling because:
 IDs must be unique per document. They’re not suitable for styling because they bind markup:CSS in a 1:1 relationship.
 IDs add 100 to CSS specificity (classes add 10 specificity) so they blow away virtually all other styling.
@@ -187,9 +187,8 @@ IDs add 100 to CSS specificity (classes add 10 specificity) so they blow away vi
 ---
 
 # CSS
-### CSS Principles
 
-##### Syntax
+## Syntax
 - Use spaces rather than tabs.
 - When grouping selectors, keep individual selectors to a single line.
 - Include one space before the opening brace of declaration blocks for legibility.
@@ -216,7 +215,8 @@ IDs add 100 to CSS specificity (classes add 10 specificity) so they blow away vi
   box-shadow: 0 1px 2px #ccc, inset 0 1px 0 #fff;
 }
 ```
-##### Declaration order
+
+## Declaration order
 Order and grouping of property declarations is not of paramount importance but, ideally, you would follow the order [specified in SMACSS](https://smacss.com/book/formatting#grouping):
 - Box
 - Border
@@ -224,10 +224,10 @@ Order and grouping of property declarations is not of paramount importance but, 
 - Text
 - Other
 
-##### Compile multiple files with SASS
+## Compile multiple files with SASS
 Generally speaking you should compile your CSS into a single file with Sass. If there's a good reason to use multiple .css files then use multiple ```<link>``` elements rather than ```@import```. 
 
-##### Media query placement
+## Media query placement
 Place media queries near to their relevant rule sets. Don't place them in a separate stylesheet or at the end of the document. Example:
 ```
 .element { ... }
@@ -241,7 +241,7 @@ Place media queries near to their relevant rule sets. Don't place them in a sepa
 }
 ```
 
-##### Shorthand notation
+## Shorthand notation
 Strive to limit use of shorthand declarations to instances where you must explicitly set all the available values. Common overused shorthand properties include:
 - padding
 - margin
@@ -269,7 +269,8 @@ Often times we don't need to set all the values a shorthand property represents.
   border-top-right-radius: 3px;
 }
 ```
-##### Nesting in Sass
+
+## Nesting in Sass
 Avoid unnecessary nesting. Just because you can nest, doesn't mean you always should. Consider nesting only if you must scope styles to a parent and if there are multiple elements to be nested.
 ```
 // Without nesting
@@ -283,7 +284,7 @@ Avoid unnecessary nesting. Just because you can nest, doesn't mean you always sh
 }
 ```
 
-##### Comments
+## Comments
 To help with maintaining and updating code please ensure your code is descriptive and well commented. Great code comments convey context or purpose. Be sure to write in complete sentences for larger comments and succinct phrases for general notes.
 ```
 /* Bad example */
@@ -299,7 +300,7 @@ To help with maintaining and updating code please ensure your code is descriptiv
 }
 ```
 
-##### Class names
+## Class names
 - Keep classes lowercase, use dashes and underscores using either the SMACSS or BEM methodology. 
 - Don't oversimplify. ```.btn``` is fine, but ```.b``` doesn't mean anything.
 - Use meaningful names; use structural or purposeful names over presentational.
@@ -316,10 +317,10 @@ To help with maintaining and updating code please ensure your code is descriptiv
 .tweet-header { ... }
 ```
 
-##### Organisation through 
+## Organising files 
 We design in a modular way in which functional parts (we call them **components**) of the site are reused many times on different page templates. To help with this approach it is useful to create a separate CSS file for each component and combine these with SASS.    
 
-##### BEM
+## BEM
 BEM (Block, Element, Modifier) from Yandex allows developers to create a simple naming convention helping make your CSS more modular and portable.
 ```
 .block{} // the ‘thing’ like .list
@@ -327,13 +328,13 @@ BEM (Block, Element, Modifier) from Yandex allows developers to create a simple 
 .block--modifier{} // a variation of the ‘thing’ like .list-—vertical
 Further Reading
 ```
-##### BEM Explained 
+### BEM Explained 
 [Find out about BEM](http://getbem.com/introduction/)
 [How to use BEM with SASS](http://alwaystwisted.com/articles/2014-02-27-even-easier-bem-ing-with-sass-33)
 
-##### CSS Tools
+## CSS Tools
 
-##### SASS
+### SASS
 
 [Available from Sass-lang](http://sass-lang.com/)
 
@@ -342,11 +343,11 @@ Further Reading
 
 [SASS guidelines can be read](https://sass-guidelin.es/)
 
-##### Normalize
+### Normalize
 Should be used to make all browsers render elements more consistently and in line with modern standards.
 [Find out about Normalize](https://necolas.github.io/normalize.css/)
 
-##### CSS Frameworks
+### CSS Frameworks
 Framework of use is [Foundation 6](http://foundation.zurb.com/)
 [Documentation available here](http://foundation.zurb.com/sites/docs/)
 ```Bower.json code :    "foundation-sites": "~6.3.0"```
@@ -355,11 +356,11 @@ Framework of use is [Foundation 6](http://foundation.zurb.com/)
 
 # JavaScript
 
-#### Frameworks
+## Frameworks
 [Base Library - jQuery](https://jquery.com/)
 [Animation Library - GreenSockJS](https://greensock.com/)
 
-#### JavaScript Tools
+## JavaScript Tools
 
 Fall backs, polyfills or shims are to be confirmed.
 A large array can be found [here](https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-Browser-Polyfills)
@@ -367,8 +368,8 @@ A large array can be found [here](https://github.com/Modernizr/Modernizr/wiki/HT
 ---
 
 # General standards
-### Media
-##### Icons
+## Media
+### Icons
 SVG should be used where possible for all Icons, PNG fallback should be also used.
 [Use Mondernizr](https://modernizr.com/)
 
@@ -382,7 +383,7 @@ Example code
 }
 ```
 
-##### Responsive Images
+### Responsive Images
 Use srcset to serve up a single image in 4 dimensions. 
 - 400px
 - 800px
@@ -393,7 +394,7 @@ Other sizes can be used, however these are the recommended ones.
 Displays with a high Pixel Density will use whichever image is best for the size and density.
 Make sure a src is still set as a fallback in case srcset is not supported. 
 
-##### Performance
+## Performance
 Measuring project speed
 Used GTMetrix.com for the main website speed test.
 
@@ -448,4 +449,4 @@ All deployments pushed to the live environment from the master branch will be do
 
 ---
 
-### Produced by Pete Clark - Katapult (Last updated 13/01/2018)
+## Produced by Pete Clark - Katapult (Last updated 13/01/2018)
