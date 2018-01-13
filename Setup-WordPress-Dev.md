@@ -158,6 +158,8 @@ Acceptable third-party Wordpress plugins to use are:
 * [Wordfence](https://www.wordfence.com/)
 
 Any third-party plugin not on this list must be verified and added before use in a client website.
+
 ---
+
 ### Produced by Pete Clark - Katapult (Last updated 13/01/2018)
 
