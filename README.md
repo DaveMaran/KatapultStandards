@@ -2,6 +2,10 @@
 
 This document has been produced as a guideline for all digital projects using HTML, CSS and JS. This is a living document and should be updated to include more tools or information when needed.
 
+## WordPress
+
+Please read the [WordPress Guidance](https://github.com/katapultstudios/KatapultStandards/blob/master/Setup-WordPress-Dev.md) for specifics on WordPress development projects.
+
 For any queries please email pete@katapult.co.uk
 
 ---
