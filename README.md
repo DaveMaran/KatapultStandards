@@ -301,7 +301,7 @@ To help with maintaining and updating code please ensure your code is descriptiv
 ```
 
 ## Class names
-- Keep classes lowercase, use dashes and underscores using either the SMACSS or BEM methodology. 
+- Keep classes lowercase, use dashes and underscores using either the [BEM or SMACSS](https://www.sitepoint.com/bem-smacss-advice-from-developers/) methodology. 
 - Don't oversimplify. ```.btn``` is fine, but ```.b``` doesn't mean anything.
 - Use meaningful names; use structural or purposeful names over presentational.
 - Use ```.js-*``` classes to denote behavior (as opposed to style), but keep these classes out of your CSS.
@@ -331,6 +331,12 @@ Further Reading
 ### BEM Explained 
 [Find out about BEM](http://getbem.com/introduction/)
 [How to use BEM with SASS](http://alwaystwisted.com/articles/2014-02-27-even-easier-bem-ing-with-sass-33)
+
+## SMACSS
+SMACSS (pronounced “smacks”) is more style guide than rigid framework. SMACSS is an attempt to document a consistent approach to site development when using CSS.
+
+### SMACSS Explained
+[Find out about SMACSS](https://smacss.com/)
 
 ## CSS Tools
 
