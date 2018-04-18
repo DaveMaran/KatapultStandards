@@ -108,7 +108,6 @@ In addition to the theme repository we should have a repo for custom WordPress p
 
 As far as possible functional elements of a WordPress website should be developed as custom plugins, rather than being included in the theme file. Technically this is not necessary but it makes for cleaner code that's easier to manage. So that's what we do. Examples of things that should be plugins, not part of the theme:
 
-- Custom post types and taxonomies
 - WordPress Shortcodes
 - WordPress Widgets
 - API integrations
@@ -161,5 +160,5 @@ Any third-party plugin not on this list must be verified and added before use in
 
 ---
 
-### Produced by Pete Clark - Katapult (Last updated 13/01/2018)
+### Produced by Pete Clark - Katapult (Last updated 18/04/2018)
 
